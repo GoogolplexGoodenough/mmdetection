@@ -1,18 +1,25 @@
 model = dict(
     type='FasterRCNN',
-    pretrained='torchvision://resnet50',
+    
     backbone=dict(
-        type='ResNet',
-        depth=50,
-        num_stages=4,
-        out_indices=(0, 1, 2, 3),
-        frozen_stages=1,
-        norm_cfg=dict(type='BN', requires_grad=True),
-        norm_eval=True,
-        style='pytorch'),
+        type='ori_fbnet',
+        out_indices=(5,9,17,23),
+        arch='fbnet_c',
+        pretrained='./Imagenet-pretrained/fbnet_c.pth',
+        ),
+    # pretrained='torchvision://resnet50',
+    # backbone=dict(
+    #     type='ResNet',
+    #     depth=50,
+    #     num_stages=4,
+    #     out_indices=(0, 1, 2, 3),
+    #     frozen_stages=1,
+    #     norm_cfg=dict(type='BN', requires_grad=True),
+    #     norm_eval=True,
+    #     style='pytorch'),
     neck=dict(
         type='FPN',
-        in_channels=[256, 512, 1024, 2048],
+        in_channels=[24, 32, 112, 1984],
         out_channels=256,
         num_outs=5),
     rpn_head=dict(

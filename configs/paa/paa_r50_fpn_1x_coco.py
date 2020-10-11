@@ -1,5 +1,5 @@
 _base_ = [
-    '../_base_/datasets/coco_detection.py',
+    '../_base_/datasets/voc0712.py',
     '../_base_/schedules/schedule_1x.py', '../_base_/default_runtime.py'
 ]
 model = dict(
@@ -26,7 +26,7 @@ model = dict(
         reg_decoded_bbox=True,
         score_voting=True,
         topk=9,
-        num_classes=80,
+        num_classes=5,
         in_channels=256,
         stacked_convs=4,
         feat_channels=256,

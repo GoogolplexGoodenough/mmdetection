@@ -1,6 +1,6 @@
 _base_ = [
     '../_base_/models/retinanet_r50_fpn.py',
-    '../_base_/datasets/coco_detection.py', '../_base_/default_runtime.py'
+    '../_base_/datasets/voc0712.py', '../_base_/default_runtime.py'
 ]
 cudnn_benchmark = True
 # model settings
@@ -55,7 +55,7 @@ test_pipeline = [
         ])
 ]
 data = dict(
-    samples_per_gpu=8,
+    samples_per_gpu=4,
     workers_per_gpu=4,
     train=dict(pipeline=train_pipeline),
     val=dict(pipeline=test_pipeline),

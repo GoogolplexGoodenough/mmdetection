@@ -19,7 +19,7 @@ train_pipeline = [
     dict(type='LoadAnnotations', with_bbox=True),
     dict(
         type='Resize',
-        img_scale=[(1333, 640), (1333, 800)],
+        img_scale=[(450, 600), (450, 600)],
         multiscale_mode='value',
         keep_ratio=True),
     dict(type='RandomFlip', flip_ratio=0.5),
@@ -32,7 +32,7 @@ test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
         type='MultiScaleFlipAug',
-        img_scale=(1333, 800),
+        img_scale=(450, 600),
         flip=False,
         transforms=[
             dict(type='Resize', keep_ratio=True),

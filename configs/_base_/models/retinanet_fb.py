@@ -1,19 +1,15 @@
 # model settings
 model = dict(
     type='RetinaNet',
-    pretrained='torchvision://resnet50',
+    pretrained='./Imagenet-pretrained/searched_backbone.pth',
     backbone=dict(
-        type='ResNet',
-        depth=50,
-        num_stages=4,
-        out_indices=(0, 1, 2, 3),
-        frozen_stages=1,
-        norm_cfg=dict(type='BN', requires_grad=True),
-        norm_eval=True,
-        style='pytorch'),
+        type='FBNet',
+        out_indices=(4, 8, 16, 22),
+        frozen_stages=-1,
+        arch='my_search_result_2'),
     neck=dict(
         type='FPN',
-        in_channels=[256, 512, 1024, 2048],
+        in_channels=[48, 96, 256, 2048],
         out_channels=256,
         start_level=1,
         add_extra_convs='on_input',
